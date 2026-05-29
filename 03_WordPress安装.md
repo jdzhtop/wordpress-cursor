@@ -226,4 +226,4 @@ define('WP_MEMORY_LIMIT', '256M');
 
 ---
 
-**下一章：第四章 WordPress 后台基础**
+**下一章：[第四章 WordPress 后台基础](./04_WordPress后台基础.md)**
