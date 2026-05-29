@@ -1,4 +1,4 @@
-## 第四章：WordPress 后台基础
+## 第4章：WordPress 后台基础
 
 ### 登录后台
 
@@ -253,6 +253,6 @@ WordPress 通过 .htaccess（Apache）或 nginx.conf（Nginx）实现 URL 重写
 
 ---
 
-**上一章：[第三章 WordPress安装](./03_WordPress安装.md)**
+**上一章：[第3章 WordPress安装](./03_WordPress安装.md)**
 
-**下一章：[第五章 创建文章](./05_创建文章.md)**
+**下一章：[第5章 创建文章](./05_创建文章.md)**
