@@ -147,4 +147,6 @@ http://yourdomain.com/wp-admin
 
 ---
 
+**上一章：[第三章 WordPress安装](./03_WordPress安装.md)**
+
 **下一章：[第五章 创建文章](./05_创建文章.md)**

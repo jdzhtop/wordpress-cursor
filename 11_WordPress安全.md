@@ -238,4 +238,6 @@ add_filter('xmlrpc_methods', 'disable_xmlrpc_pingback');
 
 ---
 
+**上一章：[第十章 性能优化](./10_性能优化.md)**
+
 **下一章：[第十二章 高级主题开发](./12_高级主题开发.md)**
