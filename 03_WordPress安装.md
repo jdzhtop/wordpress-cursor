@@ -19,18 +19,18 @@ wordpress/
 
 ### 下载 WordPress 7.0
 
-**步骤1：访问官网**
+**步骤 1：访问官网**
 ```
 浏览器打开：https://wordpress.org/download/
 ```
 
-**步骤2：下载最新版本**
+**步骤 2：下载最新版本**
 ```
 点击 "Download WordPress 7.0" 按钮
 保存 ZIP 文件到本地
 ```
 
-**原理：** WordPress 官网提供的是最新稳定版，包含完整的核心代码和默认主题。
+**原理：** WordPress 官网提供的是最新稳定版，包含完整的核心代码和默认主题。WordPress 7.0 代号"Armstrong"，于2026年5月20日发布，包含原生AI集成、后台界面重新设计等重要更新。
 
 ### 上传到服务器
 
@@ -79,7 +79,7 @@ wordpress/
 4. 添加用户到数据库：选择 `wp_user` 和 `wp_db` → 点击「添加」
 5. 权限：勾选「全部权限」→ 点击「进行更改」
 
-**步骤2：手动 SQL 创建（高级用户）**
+**步骤 2：手动 SQL 创建（高级用户）**
 ```sql
 -- 创建数据库（指定UTF-8字符集）
 CREATE DATABASE wp_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
@@ -93,6 +93,11 @@ FLUSH PRIVILEGES;
 ```
 
 **原理：** `utf8mb4` 支持完整的 Unicode 字符（包括emoji），比旧的 `utf8` 更全面。
+
+**安全建议：** 
+- 数据库用户名不要使用 `root`，应创建专用用户
+- 密码应包含大小写字母、数字和特殊字符，长度至少12位
+- 建议修改表前缀 `wp_` 为自定义前缀（如 `myblog_`），防止 SQL 注入攻击
 
 ### 完成安装流程
 
@@ -115,9 +120,11 @@ FLUSH PRIVILEGES;
 | 用户名 | wp_user | 数据库用户名 |
 | 密码 | YourStrongPassword123! | 数据库密码 |
 | 数据库主机 | localhost | 数据库服务器地址（通常是localhost） |
-| 表前缀 | wp_ | 数据库表前缀，防止多站点冲突 |
+| 表前缀 | wp_ | 数据库表前缀，**安全建议修改为自定义前缀**（如 myblog_） |
 
 点击「提交」→ 「运行安装程序」
+
+**原理：** WordPress 7.0 采用新的 DataViews 安装界面，比旧版列表表格更直观。表前缀用于区分同一数据库中的多个 WordPress 安装，使用自定义前缀可增加安全性。
 
 **Step 4：设置网站信息**
 
@@ -139,10 +146,10 @@ FLUSH PRIVILEGES;
 
 **1. 更新固定链接（重要）**
 ```
-后台 → 设置 → 固定链接
+仪表盘 → 设置 → 固定链接
 选择 "文章名称" → 点击 "保存更改"
 ```
-**原理：** 固定链接设置决定 URL 结构，`/%postname%/` 格式最利于 SEO。
+**原理：** 固定链接设置决定 URL 结构，`/%postname%/` 格式最利于 SEO。WordPress 通过 `.htaccess`（Apache）或 `nginx.conf`（Nginx）实现 URL 重写，将美观的 URL 转换为实际的查询参数。
 
 **2. 删除默认内容**
 ```
@@ -152,11 +159,28 @@ FLUSH PRIVILEGES;
 
 **3. 安装必要插件**
 ```
-插件 → 添加新插件
+插件 → 安装插件
 搜索并安装：
-- Yoast SEO（SEO优化）
-- WP Super Cache（缓存加速）
+- Yoast SEO 或 Rank Math（SEO优化）
+- WP Super Cache 或 WP Rocket（缓存加速）
 - Wordfence Security（安全防护）
+```
+
+**4. 配置 AI Connectors（WordPress 7.0 新功能）**
+```
+仪表盘 → 设置 → Connectors
+添加 AI 提供商（OpenAI、Anthropic 等）
+配置 API 密钥
+测试连接
+```
+**原理：** WordPress 7.0 原生集成 AI 能力，通过 Connectors UI 集中管理 AI 连接。配置后，可在区块编辑器中使用 AI 生成内容、调整语气、创建区块模式等。
+
+**5. 安全加固设置**
+```
+- 修改默认登录 URL（使用 WPS Hide Login 插件）
+- 启用双因素认证（使用 Google Authenticator 插件）
+- 限制登录尝试次数（使用 Limit Login Attempts Reloaded 插件）
+- 禁用 XML-RPC（如不需要远程发布功能）
 ```
 
 ### 实战：本地快速安装（Laragon）
