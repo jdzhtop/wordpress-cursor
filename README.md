@@ -1,4 +1,4 @@
-# WordPress 从入门到精通教程
+﻿# WordPress 从入门到精通教程
 
 > 一份全面的 WordPress 学习指南，帮助您从零开始掌握 WordPress 网站建设技能。
 
@@ -142,3 +142,4 @@ cd wordpress-cursor
   <br>
   <sub>© 2024 WordPress 教程 | 基于 GitHub Pages 构建</sub>
 </p>
+
